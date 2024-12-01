@@ -7,9 +7,13 @@ namespace G24W1402WPFDialog
     /// </summary>
     public partial class MainWindow : Window
     {
+        public GundamViewModel vm = new GundamViewModel();
+
         public MainWindow()
         {
             InitializeComponent();
+
+            DataContext = vm;
         }
 
         public void OnAdd(object sender, RoutedEventArgs e) {
@@ -17,16 +21,7 @@ namespace G24W1402WPFDialog
             if (dialog.ShowDialog() != true)
                 return;
 
-            Result.Text += $"{dialog.MSParty}의 {dialog.MSModel} "
-                + $"{dialog.MSName}{(HasJongsung(dialog.MSName) ? "이" : "가")} "
-                + "추가되었습니다.\n";
-        }
-
-        public bool HasJongsung(string str) {
-            if (str.Length < 1)
-                return true;
-            char last = str[str.Length - 1];
-            return (last - 44032) % 28 != 0 ? true : false;
+            vm.Add(new GundamModel(dialog.MSName, dialog.MSModel, dialog.MSParty));
         }
     }
 }

@@ -19,7 +19,13 @@
                 AcceptsReturn="True"
                 VerticalScrollBarVisibility="Auto"
                 Background="#eee"
-                DockPanel.Dock="Bottom"/>
+                DockPanel.Dock="Bottom"
+                Text="{Binding GundamListString, Mode=OneWay}"/>
+            <!--<ScrollViewer DockPanel.Dock="Bottom">
+                <TextBlock
+                    Background="#eee"
+                    Text="{Binding GundamList}"/>
+            </ScrollViewer>-->
         </DockPanel>
     </Border>
 </Window>
